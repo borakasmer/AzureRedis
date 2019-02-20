@@ -1,0 +1,32 @@
+﻿@model List<NewsModel>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Technology News on borakasmer.com</h2>
+        </div>
+        <div align="right"><b>@Model.First().createdDate</b></div>
+        <div>
+            <table class="table">                
+                @{
+                     @:<tr>
+                    var count=0;
+                    foreach(var news in Model)
+                    {                                                                         
+                        if (count % 2 == 0)
+                        {                           
+                           @:</tr><tr>
+                        }                                                                                                                                                                                                                                
+                        <td>
+                        <a href="/@Url.FriendlyUrl(news.title)/@news.Id" target="_blank" style="text-decoration: none;">
+                            <h2> @news.title</h2>
+                            <div>
+                                <img src="/images/@news.imageUrl" width="500px" height="250px">
+                            </div>  
+                        </a>                      
+                        </td>                                                                                                                                                  
+                        count++;
+                    }   
+                    @:</tr>                     
+                }
+            </table>
+        </div>
+    </div>
